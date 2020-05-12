@@ -1,0 +1,21 @@
+<h1 class="main-title">Books</h1>
+<h6 class="contents-title">Title</h6>
+<h6 class="contents-text">Body</h6>
+
+<% @bookall.each do |book| %>
+<h3><%= link_to book.title, "/new/#{book.id}" %></h3>
+<% end %>
+
+<h2 class="post-title">New book</h2>
+
+<%= form_for(@book,url:'/new') do |f| %>
+
+	<h5>title</h5>
+	<%= f.text_field :title %>
+
+	<h5>Body</h5>
+	<%= f.text_area :body %>
+
+	<%= f.submit 'Create Book' %>
+
+<% end %>
