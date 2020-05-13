@@ -1,13 +1,10 @@
 class HomesController < ApplicationController
-  def index
-  end
 
-  def show
-  	@book = Book.find(params[:id])
+  def top
   end
 
   def new
-  	@bookall =Book.all
+  	@books =Book.all
   	@book = Book.new
   end
 
@@ -17,7 +14,12 @@ class HomesController < ApplicationController
   	redirect_to '/new'
   end
 
+    def show
+  	@book = Book.find(params[:id])
+  end
+
   def edit
+  	@book = Book.find(params[:id])
   end
 end
 

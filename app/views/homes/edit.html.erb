@@ -1,11 +1,13 @@
 <h2>Editing Book</h2>
-<%= form_for(@book,url:'/new/#{@book.id}/edit') do |f| %>
+<%= form_for(@book,url:"/new/#{@book.id}") do |f| %>
 
 	<h5>title</h5>
 	<%= f.text_field :title %>
 
 	<h5>Body</h5>
 	<%= f.text_area :body %>
+
+	<br>
 
 	<%= f.submit 'Update Book' %>
 

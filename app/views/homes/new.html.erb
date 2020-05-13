@@ -2,8 +2,12 @@
 <h6 class="contents-title">Title</h6>
 <h6 class="contents-text">Body</h6>
 
-<% @bookall.each do |book| %>
-<h3><%= link_to book.title, "/new/#{book.id}" %></h3>
+<% @books.each do |book| %>
+<spam><%= book.title  %></spam>
+<span><%= link_to 'Show', "new/#{book.id}" %></span>
+<span><%= link_to 'Edit', "new/#{book.id}/edit" %></span>
+<span><%= link_to 'Destroy', 'new, method:delete, "data-confirm' => 'Are you sure?' %></span>
+<br>
 <% end %>
 
 <h2 class="post-title">New book</h2>
