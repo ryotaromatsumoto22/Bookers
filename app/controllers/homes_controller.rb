@@ -14,13 +14,26 @@ class HomesController < ApplicationController
   	redirect_to '/new'
   end
 
-    def show
+  def show
   	@book = Book.find(params[:id])
   end
 
   def edit
   	@book = Book.find(params[:id])
   end
+
+  def update
+  	book = Book.find(params[:id])
+  	book.update(book_params)
+  	redirect_to ditail_path(book.id)
+  end
+
+  def destroy
+  	book = Book.find(params[:id])
+  	book.destroy
+  	redirect_to '/new'
+  end
+
 end
 
  private 

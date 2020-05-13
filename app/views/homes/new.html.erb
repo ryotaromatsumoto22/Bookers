@@ -1,4 +1,4 @@
-<h1 class="main-title">Books</h1>
+<h2 class="main-title">Books</h2>
 <h6 class="contents-title">Title</h6>
 <h6 class="contents-text">Body</h6>
 
@@ -6,11 +6,11 @@
 <spam><%= book.title  %></spam>
 <span><%= link_to 'Show', "new/#{book.id}" %></span>
 <span><%= link_to 'Edit', "new/#{book.id}/edit" %></span>
-<span><%= link_to 'Destroy', 'new, method:delete, "data-confirm' => 'Are you sure?' %></span>
+<span><%= link_to 'Destroy', "new/#{book.id}", method: :delete, "data-confirm" => "Are you sure?" %></span>
 <br>
 <% end %>
 
-<h2 class="post-title">New book</h2>
+<h3 class="post-title">New book</h3>
 
 <%= form_for(@book,url:'/new') do |f| %>
 
@@ -19,7 +19,7 @@
 
 	<h5>Body</h5>
 	<%= f.text_area :body %>
-
+	<br>
 	<%= f.submit 'Create Book' %>
 
 <% end %>
