@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root :to => 'homes#top'
 
-  get  'new' => 'homes#new'
+  get  'new' => 'homes#new', as: 'new'
 
   post 'new' => 'homes#create'
 

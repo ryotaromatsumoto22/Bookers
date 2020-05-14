@@ -4,17 +4,17 @@ class HomesController < ApplicationController
   end
 
   def new
-  	@books =Book.all.order(created_at: :asc)
+  	@books = Book.all.order(created_at: :asc)
   	@book = Book.new
   end
 
   def create
-  	book = Book.new(book_params)
-  	if book.save
-  	flash[:noteice] = "Your book was successfully created!"
-  	redirect_to ditail_path(book.id)
+  	@books = Book.all.order(created_at: :asc)
+  	@book = Book.new(book_params)
+  	if @book.save
+  		redirect_to ditail_path(@book.id), notice: "Your book was successfully created!"
   	else
-  	render action: :new
+  		render action: :new
   	end
   end
 
@@ -28,14 +28,17 @@ class HomesController < ApplicationController
 
   def update
   	book = Book.find(params[:id])
-  	book.update(book_params)
-  	redirect_to ditail_path(book.id)
+  	if book.update(book_params)
+  		redirect_to ditail_path(book.id), notice: "Your book was successfully updated!"
+  	else
+
+  	end
   end
 
   def destroy
   	book = Book.find(params[:id])
   	book.destroy
-  	redirect_to '/new'
+  	redirect_to new_path, notice: "Your book was successfully destroyed!"
   end
 
 end

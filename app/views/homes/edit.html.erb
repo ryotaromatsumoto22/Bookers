@@ -1,18 +1,22 @@
-<h2>Editing Book</h2>
-<%= form_for(@book,url:"/new/#{@book.id}") do |f| %>
+<body>
+	<h1>Editing Book</h1>
+	<%= form_for(@book,url:"/new/#{@book.id}") do |f| %>
 
-	<h5>title</h5>
-	<%= f.text_field :title %>
+	<div class="field">
+		<label for="book-title">title</label>
+		<%= f.text_field :title %>
+	</div>
+	<div class="field">
+		<label for="book-body">Body</label>
+		<%= f.text_area :body %>
+	</div>
+	<div class="actions">
+		<%= f.submit 'Update Book' %>
+	</div>
 
-	<h5>Body</h5>
-	<%= f.text_area :body %>
+	<% end %>
 
-	<br>
-
-	<%= f.submit 'Update Book' %>
-
-<% end %>
-
-<%= link_to 'Show', "/new/#{@book.id}" %>
-|
-<%= link_to "Back", "/new" %>
+	<%= link_to 'Show', "/new/#{@book.id}" %>
+	|
+	<%= link_to "Back", "/new" %>
+</body>
