@@ -4,14 +4,18 @@ class HomesController < ApplicationController
   end
 
   def new
-  	@books =Book.all
+  	@books =Book.all.order(created_at: :asc)
   	@book = Book.new
   end
 
   def create
   	book = Book.new(book_params)
-  	book.save
-  	redirect_to '/new'
+  	if book.save
+  	flash[:noteice] = "Your book was successfully created!"
+  	redirect_to ditail_path(book.id)
+  	else
+  	render action: :new
+  	end
   end
 
   def show

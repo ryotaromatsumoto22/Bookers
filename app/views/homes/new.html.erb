@@ -1,16 +1,54 @@
 <h2 class="main-title">Books</h2>
-<h6 class="contents-title">Title</h6>
-<h6 class="contents-text">Body</h6>
 
-<% @books.each do |book| %>
-<spam><%= book.title  %></spam>
-<span><%= link_to 'Show', "new/#{book.id}" %></span>
-<span><%= link_to 'Edit', "new/#{book.id}/edit" %></span>
-<span><%= link_to 'Destroy', "new/#{book.id}", method: :delete, "data-confirm" => "Are you sure?" %></span>
-<br>
-<% end %>
+<table>
+	<tr>
+		<thead>
+		<th>Title</th>
+		<th>Body</th>
+		<th></th>
+		<th></th>
+		<th></th>
+		</thead>
+	</tr>
+	<tbody>
+		<% @books.each do |book| %>
+	<tr>
+		<td>
+			<%= book.title  %>
+		</td>
+		<td>
+			<%= book.body %>
+		</td>
+		<td>
+			<%= link_to 'Show', "new/#{book.id}" %>
+		</td>
+		<td>
+			<%= link_to 'Edit', "new/#{book.id}/edit" %>
+		</td>
+		<td>
+			<%= link_to 'Destroy', "new/#{book.id}", method: :delete, "data-confirm" => "Are you sure?" %>
+		</td>
+	</tr>
+		<% end %>
+	</tbody>
+</table>
+
+
+
+
 
 <h3 class="post-title">New book</h3>
+
+<% if @book.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 
 <%= form_for(@book,url:'/new') do |f| %>
 
