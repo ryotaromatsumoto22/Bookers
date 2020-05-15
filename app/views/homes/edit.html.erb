@@ -1,6 +1,18 @@
 <body>
 	<h1>Editing Book</h1>
-	<%= form_for(@book,url:"/new/#{@book.id}") do |f| %>
+	<%= form_for(@book,url:"/books/#{@book.id}") do |f| %>
+
+	<% if @book.errors.any? %>
+  		<div class="error_explanation">
+  		<h2><%= @book.errors.count %> errors prohibited this book from being saved:
+  		</h2>
+    	<ul>
+      	<% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      	<% end %>
+    	</ul>
+  		</div>
+	<% end %>
 
 	<div class="field">
 		<label for="book-title">title</label>
@@ -16,7 +28,7 @@
 
 	<% end %>
 
-	<%= link_to 'Show', "/new/#{@book.id}" %>
+	<%= link_to 'Show', book_path(@book.id) %>
 	|
-	<%= link_to "Back", "/new" %>
+	<%= link_to "Back", books_path %>
 </body>

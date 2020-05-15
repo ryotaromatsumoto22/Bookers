@@ -1,9 +1,9 @@
 class HomesController < ApplicationController
 
-  def top
+  def root
   end
 
-  def new
+  def books
   	@books = Book.all.order(created_at: :asc)
   	@book = Book.new
   end
@@ -12,9 +12,9 @@ class HomesController < ApplicationController
   	@books = Book.all.order(created_at: :asc)
   	@book = Book.new(book_params)
   	if @book.save
-  		redirect_to ditail_path(@book.id), notice: "Your book was successfully created!"
+  		redirect_to book_path(@book.id), notice: "Your book was successfully created!"
   	else
-  		render action: :new
+  		render action: :books
   	end
   end
 
@@ -27,18 +27,18 @@ class HomesController < ApplicationController
   end
 
   def update
-  	book = Book.find(params[:id])
-  	if book.update(book_params)
-  		redirect_to ditail_path(book.id), notice: "Your book was successfully updated!"
+    @book = Book.find(params[:id])
+  	if @book.update(book_params)
+  		redirect_to book_path(@book.id), notice: "Your book was successfully updated!"
   	else
-
+      render action: :edit
   	end
   end
 
   def destroy
   	book = Book.find(params[:id])
   	book.destroy
-  	redirect_to new_path, notice: "Your book was successfully destroyed!"
+  	redirect_to books_path, notice: "Your book was successfully destroyed!"
   end
 
 end
