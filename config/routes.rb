@@ -1,18 +1,18 @@
 Rails.application.routes.draw do
 
-  root :to => 'homes#top'
+  root :to => 'homes#root',as: 'root'
 
-  get  'new' => 'homes#new', as: 'new'
+  get  'books' => 'homes#books', as: 'books'
 
-  post 'new' => 'homes#create'
+  post 'books' => 'homes#create', as: 'create'
 
-  get 'new/:id' => 'homes#show', as: 'ditail'
+  get 'books/:id' => 'homes#show', as: 'book'
 
-  get 'new/:id/edit' => 'homes#edit', as: 'edit_ditail'
+  get 'books/:id/edit' => 'homes#edit', as: 'edit_book'
 
-  patch 'new/:id' => 'homes#update', as: 'update_ditail'
+  patch 'books/:id' => 'homes#update', as: 'update_ditail'
 
-  delete 'new/:id' => 'homes#destroy', as: 'destroy_ditail'
+  delete 'books/:id' => 'homes#destroy', as: 'destroy_ditail'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
